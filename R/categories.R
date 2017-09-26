@@ -31,28 +31,44 @@
 #' category_create("stuff", "F7941D", "FFFFFF", "My new category")
 #' }
 categories <- function(url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
+  #args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
   disc_GET(check_url(url), "categories.json", args, ...)
 }
 
 #' @export
 #' @rdname categories
 category <- function(category, url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
+  #args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
   disc_GET(check_url(url), sprintf("c/%s.json", category), args, ...)
 }
 
 #' @export
 #' @rdname categories
 category_latest_topics <- function(category, url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
+  #args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
   disc_GET(check_url(url), sprintf("c/%s/l/latest.json", category), args, ...)
 }
 
 #' @export
 #' @rdname categories
 category_top_topics <- function(category, url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
+  #args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
   disc_GET(check_url(url), sprintf("c/%s/l/top.json", category), args, ...)
 }
 

@@ -7,6 +7,9 @@
 #' tag('geospatial')
 #' }
 tag <- function(tag, url = NULL, key = NULL, user = NULL, ...) {
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
   disc_GET(check_url(url), sprintf("tags/%s.json", tag), args, ...)
 }

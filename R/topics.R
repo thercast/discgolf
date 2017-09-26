@@ -61,7 +61,10 @@
 #' @export
 #' @rdname topics
 topics_latest <- function(url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
   disc_GET(check_url(url), "latest.json", args, ...)
 }
 
@@ -75,14 +78,20 @@ topics_new <- function(url = NULL, key = NULL, user = NULL, ...){
 #' @export
 #' @rdname topics
 topics_by <- function(id, url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
   disc_GET(check_url(url), sprintf("topics/created-by/%s.json", id), args, ...)
 }
 
 #' @export
 #' @rdname topics
 topic <- function(id, url = NULL, key = NULL, user = NULL, ...){
-  args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  args <- NULL
+  if (use_auth(key, user)) {
+    args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
+  }
   disc_GET(check_url(url), sprintf("t/%s.json", id), args, ...)
 }
 
