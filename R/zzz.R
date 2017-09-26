@@ -14,3 +14,9 @@ check_user <- function(x){
   tmp <- if (is.null(x)) Sys.getenv("DISCOURSE_USERNAME", "") else x
   if (tmp == "") getOption("discourse_username", stop("need a Discourse username")) else tmp
 }
+
+use_auth <- function(key = NULL, user = NULL) {
+  # if each of key or user are not null, then assume auth is needed
+  tmp <- !is.null(key) & !is.null(user)
+  return(tmp)
+}
