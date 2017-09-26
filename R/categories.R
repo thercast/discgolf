@@ -35,7 +35,6 @@ categories <- function(url = NULL, key = NULL, user = NULL, ...){
   if (use_auth(key, user)) {
     args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
   }
-  #args <- dc(list(api_key = check_key(key), api_username = check_user(user)))
   disc_GET(check_url(url), "categories.json", args, ...)
 }
 
